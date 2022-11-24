@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider_class/screens/home.dart';
 
+//HERE YOU WILL SETUP YOU MILTIPROVIDER FUNCTION
+//DONT FORGET TO ADD YOUR PROVIDER CLASSES
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -8,9 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: HomeScreen(),
-    );
+    return const MaterialApp(title: 'Material App', home: HomeScreen());
   }
 }

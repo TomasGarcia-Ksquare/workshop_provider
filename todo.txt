@@ -1,0 +1,4 @@
+- - lib
+    - - Screens
+    - - Models
+    - - Controllers
