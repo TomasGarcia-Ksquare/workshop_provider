@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_class/controllers/theme_mode_provider.dart';
+import 'package:provider_class/models/theme_model.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   //YOU WOULD MOVE YOUR VARIABLE INSIDE THE PROVIDER CLASS
   //HERE YOU WILL CREATE YOUR INSTANCE OF THE PROVIDER CLASS
-  Color primaryColor = Colors.orange;
-  Color backgroundColor = Colors.white;
-  var iconFloatingElevationButton = const Icon(Icons.mode_night);
 
   @override
   Widget build(BuildContext context) {
+    final modeThemeProvider = Provider.of<ThemeModeProvider>(context);
+    ThemeModel theme = modeThemeProvider.theme;
+
+    Color primaryColor = theme.primaryColor;
+    Color backgroundColor = theme.backgroundColor;
+    var iconFloatingElevationButton = theme.iconFloatingElevationButton;
+
     return Scaffold(
       appBar: AppBar(
         //THIS VARIABLE WILL CHANGE IT STATE
@@ -33,6 +35,9 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {
             //HERE YOU WOULD CALL YOUR INSTANCE.YOURFUNCTION
             // DONT FORGET TO ADD THE IF STATEMENT
+            primaryColor == Colors.orange
+                ? modeThemeProvider.changeToNightTheme()
+                : modeThemeProvider.changeToDayTheme();
           }),
     );
   }
